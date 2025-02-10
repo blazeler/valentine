@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        body {
+            background-color: pink;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+        }
+        h1 {
+            font-size: 3em;
+            color: white;
+            text-shadow: 2px 2px 5px red;
+        }
+        .gif {
+            width: 200px;
+            margin-top: 20px;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .btn {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .yes-btn {
+            background-color: red;
+            color: white;
+        }
+        .no-btn {
+            background-color: white;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine? 💖</h1>
+    <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" class="gif" alt="Cute GIF">
+    <div class="button-container">
+        <button class="btn yes-btn" onclick="yesClicked()">Yes</button>
+        <button class="btn no-btn" onclick="noClicked()">No</button>
+    </div>
+
+    <script>
+        let noTexts = ["Are you sure?", "Oh c'mon", "Think again!", "Pretty please?", "Last chance!", "Don't break my heart 💔"];
+        let noIndex = 0;
+        let yesSize = 1.5;
+        function yesClicked() {
+            document.body.innerHTML = "<h1>Yay! I knew it!! 💘</h1><img src='https://media.giphy.com/media/l4FGuhL4U2WyjdkaY/giphy.gif' class='gif'>";
+        }
+        function noClicked() {
+            let yesBtn = document.querySelector('.yes-btn');
+            let noBtn = document.querySelector('.no-btn');
+            yesSize *= 1.5;
+            yesBtn.style.fontSize = yesSize + "em";
+            noBtn.style.fontSize = (parseFloat(window.getComputedStyle(noBtn).fontSize) - 2) + "px";
+            noBtn.innerText = noTexts[noIndex % noTexts.length];
+            noIndex++;
+        }
+    </script>
+</body>
+</html>
